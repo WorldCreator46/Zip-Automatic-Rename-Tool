@@ -52,7 +52,6 @@ def ZipFileCreate():
             except:
                 print(p2, "오류")
         print(p,"완료")
-ZipFileCreate()
 def t():
     t = set()
     for F in os.listdir(path_dir):
@@ -63,3 +62,16 @@ def t():
     for i in t:
         print(i)
         shutil.move(path_dir+i, path_zip)
+def FolderMove():
+    NP = "D:/m/새 폴더/"
+    ts = set()
+    for F in os.listdir(NP):
+        if '[' in F:
+            ts.add(re.sub("\[","",F.split(']')[0]))
+    for f in ts:
+        createDirectory(f)
+    for F in os.listdir(NP):
+        if '[' in F:
+            shutil.move(NP+F,re.sub("\[","",F.split(']')[0]))
+
+FolderMove()
